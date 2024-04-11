@@ -11,8 +11,8 @@
 
 ### Create Athena table using PARQUET files
 * To create tables in Athena we will need a bucket with permissions to the user creating the table
-* **Bucket Name** `ti-p-athena`
-* **Folder Name** `customer-billing/parquet/`
+* **Bucket Name** `ti-instructor-data`
+* **Folder Name** `ti-athena-training/customer-billing/parquet/`
 * **File Format** `.parquet`
 * **Create Table**
 ```sql
@@ -27,13 +27,13 @@ create external table tinitiate_athena.athena_parquet (
   ,quantity     int
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
-LOCATION 's3://ti-p-data/customer-billing/parquet';
+LOCATION 's3://ti-instructor-data/ti-athena-training/customer-billing/parquet';
 ```
 
 ### Create Athena table using Snappy compressed PARQUET files
 * To create tables in Athena we will need a bucket with permissions to the user creating the table
-* **Bucket Name** `ti-p-athena`
-* **Folder Name** `customer-billing/parquet/`
+* **Bucket Name** `ti-instructor-data`
+* **Folder Name** `ti-athena-training/customer-billing/parquet/`
 * **File Format** `.parquet.snappy`
 * **Create Table**
 ```sql
@@ -48,5 +48,12 @@ create external table tinitiate_athena.athena_parquet_snappy (
   ,quantity     int
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
-LOCATION 's3://ti-p-data/customer-billing/snappy-parquet';
+LOCATION 's3://ti-instructor-data/ti-athena-training/customer-billing/snappy-parquet';
+```
+
+
+### Drop Table
+```sql
+drop table tinitiate_athena.athena_parquet;
+drop table tinitiate_athena.athena_parquet_snappy;
 ```

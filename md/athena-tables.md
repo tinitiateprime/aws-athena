@@ -27,3 +27,13 @@ Athena, the serverless interactive query service by AWS, empowers you to analyze
 * Arrays can be unnested, enabling you to query individual elements within the array.
 * Map Handling: Athena provides functions to work with maps, allowing you to extract and manipulate key-value pairs.
 * Struct Handling: Structs can be used to represent nested structures, enhancing the flexibility of your data model.
+
+# Create Table
+* Primary Key
+* Foreign key
+* Constraints
+* SerDe Type
+
+# Alter Table
+
+# Drop Table

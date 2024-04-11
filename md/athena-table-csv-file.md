@@ -18,8 +18,8 @@ order_id,store_id,order_date,customer_id,name,email,product_id,quantity
 
 ### Creating a table
 * To create tables in Athena we will need a bucket with permissions to the user creating the table
-* **Bucket Name** `ti-p-athena`
-* **Folder Name** `customer-billing/csv/`
+* **Bucket Name** `ti-instructor-data`
+* **Folder Name** `ti-athena-training/customer-billing/csv/`
 * **File Format** `CSV`
 * **Create Table**
 ```sql
@@ -34,14 +34,14 @@ CREATE EXTERNAL TABLE tinitiate_athena.athena_csv (
    quantity     INT
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-LOCATION 's3://ti-p-data/customer-billing/csv/'
+LOCATION 's3://ti-instructor-data/ti-athena-training/customer-billing/csv/'
 TBLPROPERTIES ('skip.header.line.count'='1');
 ```
 
 ### Create Athena table using csv zip files
 * To create tables in Athena we will need a bucket with permissions to the user creating the table
-* **Bucket Name** `ti-p-athena`
-* **Folder Name** `customer-billing/csv-gz/`
+* **Bucket Name** `ti-instructor-data`
+* **Folder Name** `ti-athena-training/customer-billing/csv-gz/`
 * **File Format** `CSV`
 * **Create Table**
 ```sql
@@ -57,6 +57,13 @@ CREATE EXTERNAL TABLE tinitiate_athena.athena_csv_gz (
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES ( 'serialization.format' = ',', 'field.delim' = ',')
-LOCATION 's3://ti-p-data/customer-billing/csv/'
+LOCATION 's3://ti-instructor-data/ti-athena-training/customer-billing/csv/'
 TBLPROPERTIES ('skip.header.line.count'='1');
+```
+
+
+### Drop Table
+```sql
+drop table tinitiate_athena.athena_csv;
+drop table tinitiate_athena.athena_csv_gz;
 ```

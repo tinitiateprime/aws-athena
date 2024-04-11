@@ -41,8 +41,8 @@ An ordered list of values. In most languages, this is realized as an array, vect
 
 ## Create Athena table using json files
 * To create tables in Athena we will need a bucket with permissions to the user creating the table
-* **Bucket Name** `ti-p-athena`
-* **Folder Name** `customer-billing/json/`
+* **Bucket Name** `ti-instructor-data`
+* **Folder Name** `ti-athena-training/customer-billing/json/`
 * **File Format** `JSON`
 * **Create Table**
 ```sql
@@ -56,13 +56,13 @@ create external table tinitiate_athena.athena_json (
 row format serde 'org.apache.hive.hcatalog.data.JsonSerDe'
 stored as inputformat 'org.apache.hadoop.mapred.TextInputFormat'
 outputformat 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-location 's3://ti-p-data/customer-billing/json/';
+location 's3://ti-instructor-data/ti-athena-training/customer-billing/json/';
 ```
 
 ## Create Athena table using Newline delimited JSON files
 * To create tables in Athena we will need a bucket with permissions to the user creating the table
-* **Bucket Name** `ti-p-athena`
-* **Folder Name** `customer-billing/ndjson/`
+* **Bucket Name** `ti-instructor-data`
+* **Folder Name** `ti-athena-training/customer-billing/ndjson/`
 * **File Format** `JSON`
 * **Create Table**
 ```sql
@@ -76,13 +76,13 @@ create external table tinitiate_athena.athena_ndjson (
 row format serde 'org.apache.hive.hcatalog.data.JsonSerDe'
 stored as inputformat 'org.apache.hadoop.mapred.TextInputFormat'
 outputformat 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-location 's3://ti-p-data/customer-billing/json/';
+location 's3://ti-instructor-data/ti-athena-training/customer-billing/json/';
 ```
 
 ## Create Athena table using json zip files
 * To create tables in Athena we will need a bucket with permissions to the user creating the table
-* **Bucket Name** `ti-p-athena`
-* **Folder Name** `customer-billing/gz-json/`
+* **Bucket Name** `ti-instructor-data`
+* **Folder Name** `ti-athena-training/customer-billing/gz-json/`
 * **File Format** `JSON.gz`
 * **Create Table**
 ```sql
@@ -96,5 +96,13 @@ create external table tinitiate_athena.athena_gz_json (
 row format serde 'org.apache.hive.hcatalog.data.JsonSerDe'
 stored as inputformat 'org.apache.hadoop.mapred.TextInputFormat'
 outputformat 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-location 's3://ti-p-data/customer-billing/gz-json/';
+location 's3://ti-instructor-data/ti-athena-training/customer-billing/gz-json/';
+```
+
+
+### Drop Table
+```sql
+drop table tinitiate_athena.athena_json;
+drop table tinitiate_athena.athena_ndjson;
+drop table tinitiate_athena.athena_gz_json;
 ```
